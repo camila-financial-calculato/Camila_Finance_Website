@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Financial Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Stock Risk & Return Calculator</h1>
+
+    <input type="text" id="ticker" placeholder="Enter stock ticker (e.g. AAPL)">
+    <button onclick="getData()">Get Data</button>
+
+    <p id="result"></p>
+
+    <script>
+        async function getData() {
+            const ticker = document.getElementById("ticker").value;
+
+            document.getElementById("result").innerText =
+                "Fetching data for " + ticker + "...";
+
+            // Placeholder for now
+            document.getElementById("result").innerText =
+                "Next step: connect to Yahoo Finance API";
+        }
+    </script>
+</body>
+</html>
