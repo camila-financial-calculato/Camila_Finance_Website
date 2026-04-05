@@ -2,8 +2,7 @@ async function getStockData() {
     const stock = document.getElementById('stock').value.toUpperCase();
     if (!stock) return alert("Please enter a stock symbol");
 
-    const url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${stock}?modules=defaultKeyStatistics,financialData,summaryDetail,price`;
-
+    const url = `https://financialmodelingprep.com/api/v3/profile/${ticker}?apikey=${apiKey}`;
     try {
         const response = await fetch(url);
         const data = await response.json();
