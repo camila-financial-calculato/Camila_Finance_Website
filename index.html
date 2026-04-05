@@ -1,27 +1,44 @@
-<script>
-async function getData() {
-    const ticker = document.getElementById("ticker").value;
-    const apiKey = "ZCbOVBqF61rJ2vZrhbChfoNsOOUOVGsT";
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Financial Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    const url = `https://financialmodelingprep.com/api/v3/profile/${ticker}?apikey=${apiKey}`;
+<body>
+    <h1>Stock Risk & Return Calculator</h1>
 
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
+    <input type="text" id="ticker" placeholder="Enter stock ticker">
+    <button onclick="getData()">Get Data</button>
 
-        if (data.length === 0) {
-            document.getElementById("result").innerText = "Stock not found";
-            return;
-        }
+    <p id="result"></p>
 
-        const stock = data[0];
+    <script>
+        async function getData() {
+            const ticker = document.getElementById("ticker").value;
+            const apiKey = "ZCbOVBqF61rJ2vZrhbChfoNsOOUOVGsT";
 
-        document.getElementById("result").innerText =
-            `Company: ${stock.companyName}
+            const url = `https://financialmodelingprep.com/api/v3/profile/${ticker}?apikey=${apiKey}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.length === 0) {
+                    document.getElementById("result").innerText = "Stock not found";
+                    return;
+                }
+
+                const stock = data[0];
+
+                document.getElementById("result").innerText =
+                    `Company: ${stock.companyName}
 Price: $${stock.price}
 Beta: ${stock.beta}`;
-    } catch (error) {
-        document.getElementById("result").innerText = "Error fetching data";
-    }
-}
-</script>
+            } catch (error) {
+                document.getElementById("result").innerText = "Error fetching data";
+            }
+        }
+    </script>
+</body>
+</html>
