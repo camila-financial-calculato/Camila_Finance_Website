@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Camila's Finance Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Camila's Finance Website</h1>
+    <h2>Stock Analysis Tool</h2>
+
+    <label for="stock">Enter Stock Symbol:</label>
+    <input type="text" id="stock" placeholder="e.g., AAPL">
+    <button onclick="getStockData()">Get Data</button>
+
+    <div id="results">
+        <h3>Risk & Returns</h3>
+        <p id="beta">Beta: </p>
+        <p id="stddev">Standard Deviation: </p>
+
+        <h3>Performance</h3>
+        <p id="annualized">Annualized Returns: </p>
+
+        <h3>Market Info</h3>
+        <p id="marketcap">Market Cap: </p>
+        <p id="pe">P/E Ratio: </p>
+        <p id="dividend">Dividend Yield: </p>
+
+        <h3>Sector Comparison</h3>
+        <p id="sector">Average Returns of Sector: </p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
