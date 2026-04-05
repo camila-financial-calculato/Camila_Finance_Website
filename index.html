@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Financial Calculator</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<script>
+async function getData() {
+    const ticker = document.getElementById("ticker").value;
+    const apiKey = "ZCbOVBqF61rJ2vZrhbChfoNsOOUOVGsT";
 
-<body>
-    <h1>Stock Risk & Return Calculator</h1>
+    const url = `https://financialmodelingprep.com/api/v3/profile/${ticker}?apikey=${apiKey}`;
 
-    <input type="text" id="ticker" placeholder="Enter stock ticker (e.g. AAPL)">
-    <button onclick="getData()">Get Data</button>
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
 
-    <p id="result"></p>
-
-    <script>
-        async function getData() {
-            const ticker = document.getElementById("ticker").value;
-
-            document.getElementById("result").innerText =
-                "Fetching data for " + ticker + "...";
-
-            // Placeholder for now
-            document.getElementById("result").innerText =
-                "Next step: connect to Yahoo Finance API";
+        if (data.length === 0) {
+            document.getElementById("result").innerText = "Stock not found";
+            return;
         }
-    </script>
-</body>
-</html>
+
+        const stock = data[0];
+
+        document.getElementById("result").innerText =
+            `Company: ${stock.companyName}
+Price: $${stock.price}
+Beta: ${stock.beta}`;
+    } catch (error) {
+        document.getElementById("result").innerText = "Error fetching data";
+    }
+}
+</script>
